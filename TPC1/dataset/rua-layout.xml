@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rua>
+  <meta>
+    <número>string</número>
+    <nome>string</nome>
+  </meta>
+  <corpo>
+    <para>
+      string
+    </para>
+    <lista-casas>
+      <casa>
+        <número>string</número>
+        <enfiteuta>string</enfiteuta>
+        <foro>string</foro>
+        <desc>
+          <para>
+            string
+          </para>
+        </desc>
+        <vista>string</vista>
+      </casa>
+    </lista-casas>
+    <nome>
+      string
+    </nome>
+    <figura id>
+      <imagem path largura/>
+      <legenda>string</legenda>
+    </figura>
+  </corpo>
+</rua>
