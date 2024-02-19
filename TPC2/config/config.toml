@@ -1,0 +1,10 @@
+[api]
+dir = "api"
+file = "dataset.json"
+log_file = "./api/log.txt"
+
+[server]
+dir = "server"
+file = "server.js"
+port = 3000
+log_file = "./server/log.txt"
