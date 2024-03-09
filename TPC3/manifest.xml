@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doc>
+  <meta>
+    <title>TPC3</title>
+    <date>
+      <start>2024-02-28</start>
+      <end>2024-03-04</end>
+    </date>
+    <author>
+      <id>A93294</id>
+      <name>Pedro Miguel Rodrigues Gomes</name>
+    </author>
+    <UC>
+      <sigla>EngWeb2024</sigla>
+      <name>Engenharia Web</name>
+    </UC>
+  </meta>
+  <resumo>
+    <p>Análise de Dados e Criação de Banco de Dados - Analisar os dados fornecidos sobre filmes e criar um dataset apropriado para ser utilizado com JSON-SERVER.</p>
+    <p>Serviço Web de Consulta - Utilização de CSS e JavaScript para criar uma página web que permita a consulta de filmes, atores e gênero cinematográficos. Desenvolver um serviço web que responda a pedidos HTTP GET nas seguintes rotas: </p>
+    <p>`/filmesd` -> Uma listagem de todos os filmes.</p>
+    <p>`/filmes/{id}d` -> Detalhes sobre um filme específico.</p>
+    <p>`/generosd` -> Uma lista com todos os gêneros cinematográficos presentes no dataset.</p>
+    <p>`/generos/{id}d` -> Detalhes sobre um gênero cinematográfico específico.</p>
+    <p>`/atord` -> Uma lista com todos os atores presentes no dataset.</p>
+    <p>`/ator/{id}d` -> Detalhes sobre um ator específico.</p>
+  </resumo>
+  <resultados>
+    <p>Página Inicial - ![Página Inicial](https://mayorx.xyz/Media/EngWeb2024/tpc3/index.png)</p>
+    <p>Página de Filmes - ![Página de Filmes](https://mayorx.xyz/Media/EngWeb2024/tpc3/filmes.png)</p>
+    <p>Página de Atores - ![Página de Atores](https://mayorx.xyz/Media/EngWeb2024/tpc3/atores.png)</p>
+    <p>Página de Generos - ![Página de Generos](https://mayorx.xyz/Media/EngWeb2024/tpc3/generos.png)</p>
+    <p>Página de Filme Específico - ![Página de Filme Específico](https://mayorx.xyz/Media/EngWeb2024/tpc3/filme.png)</p>
+    <p>Página de Ator Específico - ![Página de Ator Específico](https://mayorx.xyz/Media/EngWeb2024/tpc3/ator.png)</p>
+    <p>Página de Genero Específico - ![Página de Genero Específico](https://mayorx.xyz/Media/EngWeb2024/tpc3/genero.png)</p>
+  </resultados>
+</doc>
