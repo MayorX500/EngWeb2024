@@ -31,19 +31,19 @@
 
 ![Página Inicial](https://mayorx.xyz/Media/EngWeb2024/tpc4/index.png)
 
-![Página de Compositores](https://mayorx.xyz/Media/EngWeb2024/tpc4/compositor.png)
+![Página de Compositores](https://mayorx.xyz/Media/EngWeb2024/tpc4/composers.png)
 
 ![Página de Períodos](https://mayorx.xyz/Media/EngWeb2024/tpc4/periods.png)
 
-![Página de Compositor Específico](https://mayorx.xyz/Media/EngWeb2024/tpc4/compositor.png)
+![Página de Compositor Específico](https://mayorx.xyz/Media/EngWeb2024/tpc4/composer.png)
 
 ![Página de Período Específico](https://mayorx.xyz/Media/EngWeb2024/tpc4/period.png)
 
-![CRUD de Compositores](https://mayorx.xyz/Media/EngWeb2024/tpc4/crud_edit_compositor.png)
+![CRUD de Compositores](https://mayorx.xyz/Media/EngWeb2024/tpc4/crud_edit_composer.png)
 
-![CRUD de Compositores](https://mayorx.xyz/Media/EngWeb2024/tpc4/crud_add_compositor.png)
+![CRUD de Compositores](https://mayorx.xyz/Media/EngWeb2024/tpc4/crud_add_composerr.png)
 
-![CRUD de Compositores](https://mayorx.xyz/Media/EngWeb2024/tpc4/crud_delete_compositor.png)
+![CRUD de Compositores](https://mayorx.xyz/Media/EngWeb2024/tpc4/crud_delete_composer.png)
 
 ![CRUD de Compositores](https://mayorx.xyz/Media/EngWeb2024/tpc4/crud_edit_period.png)
 
