@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doc>
+  <meta>
+    <title>TPC4</title>
+    <date>
+      <start>2024-03-09</start>
+      <end>2024-03-xx</end>
+    </date>
+    <author>
+      <id>A93294</id>
+      <name>Pedro Miguel Rodrigues Gomes</name>
+    </author>
+    <UC>
+      <sigla>EngWeb2024</sigla>
+      <name>Engenharia Web</name>
+    </UC>
+  </meta>
+  <resumo>
+    <p>Análise de Dados e Criação de Banco de Dados - Analisar os dados fornecidos sobre compositores de música e criar um dataset apropriado para ser utilizado com JSON-SERVER.</p>
+    <p>Serviço Web de Consulta - Utilização de CSS e JavaScript para criar uma página web que permita a consulta de compositores e períodos musicais. Desenvolver um serviço web que responda a pedidos HTTP GET nas seguintes rotas:</p>
+    <p>`/compositores` -> Uma listagem de todos os compositores.</p>
+    <p>`/compositores/{id}` -> Detalhes sobre um compositor específico.</p>
+    <p>`/compositores?periodo={periodo}` -> Uma lista de compositores de um determinado período.</p>
+    <p>`/periodos` -> Uma lista com todos os períodos musicais presentes no dataset.</p>
+    <p>`/periodos/{id}` -> Detalhes sobre um período musical específico.</p>
+    <p>Operações CRUD - Implementar operações CRUD (Create, Read, Update, Delete) para:</p>
+    <p>`/compositores` -> Permitir adicionar, editar, remover e consultar compositores.</p>
+    <p>`/periodos` -> Permitir adicionar, editar, remover e consultar períodos musicais.</p>
+  </resumo>
+  <resultados>
+    <p>Página Inicial : https://mayorx.xyz/Media/EngWeb2024/tpc4/index.png </p>
+    <p>Página de Compositores : https://mayorx.xyz/Media/EngWeb2024/tpc4/compositor.png </p>
+    <p>Página de Períodos : https://mayorx.xyz/Media/EngWeb2024/tpc4/periods.png </p>
+    <p>Página de Compositor Específico : https://mayorx.xyz/Media/EngWeb2024/tpc4/compositor.png </p>
+    <p>Página de Período Específico : https://mayorx.xyz/Media/EngWeb2024/tpc4/period.png </p>
+    <p>CRUD de Compositores : https://mayorx.xyz/Media/EngWeb2024/tpc4/crud_edit_compositor.png </p>
+    <p>CRUD de Compositores : https://mayorx.xyz/Media/EngWeb2024/tpc4/crud_add_compositor.png </p>
+    <p>CRUD de Compositores : https://mayorx.xyz/Media/EngWeb2024/tpc4/crud_delete_compositor.png </p>
+    <p>CRUD de Compositores : https://mayorx.xyz/Media/EngWeb2024/tpc4/crud_edit_period.png </p>
+    <p>CRUD de Compositores : https://mayorx.xyz/Media/EngWeb2024/tpc4/crud_add_period.png </p>
+    <p>CRUD de Compositores : https://mayorx.xyz/Media/EngWeb2024/tpc4/crud_delete_period.png </p>
+    <p>About : https://mayorx.xyz/Media/EngWeb2024/tpc4/about.png </p>
+  </resultados>
+</doc>
