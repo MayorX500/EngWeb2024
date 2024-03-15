@@ -41,7 +41,7 @@
 
 ![CRUD de Compositores](https://mayorx.xyz/Media/EngWeb2024/tpc4/crud_edit_composer.png)
 
-![CRUD de Compositores](https://mayorx.xyz/Media/EngWeb2024/tpc4/crud_add_composerr.png)
+![CRUD de Compositores](https://mayorx.xyz/Media/EngWeb2024/tpc4/crud_add_composer.png)
 
 ![CRUD de Compositores](https://mayorx.xyz/Media/EngWeb2024/tpc4/crud_delete_composer.png)
 
