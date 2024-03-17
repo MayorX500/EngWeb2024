@@ -1,51 +1,30 @@
 const axios = require('axios');
-const querystring = require('querystring');
 
-/*
-{
-    "id": "ID",
-    "nome": "NAME",
-    "bio": "BIO",
-    "dataNasc": "BIRTH",
-    "dataObito": "DEATH",
-    "periodoId": "PERIOD_ID"
-    "periodo": "PERIOD"
-}
-*/
-async function get_composer_information(composer_id) {
+async function get_composer_information(composer_id, embed = true) {
     let composer_info = {};
+    let query = `http://localhost:3000/compositores/${composer_id}`;
 
     try {
-        const response = await axios.get(`http://localhost:3000/compositores/${composer_id}?_embed=periodo`);
+        if (embed) {
+            query += "?_embed=periodo";
+        }
+        const response = await axios.get(query);
         composer_info = {
             id: response.data['id'],
-            name: response.data['nome'],
+            nome: response.data['nome'],
             bio: response.data['bio'],
-            birth: response.data['dataNasc'],
-            death: response.data['dataObito'],
-            periodId: response.data['periodoId'],
-            period: response.data['periodo']
+            dataNasc: response.data['dataNasc'],
+            dataObito: response.data['dataObito'],
+            periodoId: response.data['periodoId'],
+            periodo: response.data['periodo']
         };
         return composer_info;
     } catch (error) {
-        console.error("Failed to fetch composer information:", error.message);
+        console.error("Failed to fetch composer information(API GET):", error.message);
         return null;
     }
 }
 
-/*
-[
-    {
-        "id": "ID",
-        "nome": "NAME",
-        "bio": "BIO",
-        "dataNasc": "BIRTH",
-        "dataObito": "DEATH",
-        "periodoId": "PERIOD_ID"
-        "periodo": "PERIOD"
-    }
-]
-*/
 async function get_composers(queryObject){
     let composers = [];
 
@@ -55,12 +34,12 @@ async function get_composers(queryObject){
             for (const composer of response.data) {
                 composers.push({
                     id: composer['id'],
-                    name: composer['nome'],
+                    nome: composer['nome'],
                     bio: composer['bio'],
-                    birth: composer['dataNasc'],
-                    death: composer['dataObito'],
-                    periodId: composer['periodoId'],
-                    period: composer['periodo']
+                    dataNasc: composer['dataNasc'],
+                    dataObito: composer['dataObito'],
+                    periodoId: composer['periodoId'],
+                    periodo: composer['periodo']
                 });
             }
             return composers;
@@ -71,19 +50,6 @@ async function get_composers(queryObject){
     }
 }
 
-/*
-{
-   "id":"PERIOD_ID",
-   "periodo":"NAME",
-   "composer":[
-      {
-         "nome":"NOME",
-         "id":"ID"
-      }
-   ]
-}
-*/
-
 async function get_period_information(period_id) {
     let period_info = {};
 
@@ -91,12 +57,15 @@ async function get_period_information(period_id) {
         const response = await axios.get(`http://localhost:3000/periodos/${period_id}`);
         period_info = {
             id: response.data['id'],
-            name: response.data['nome'],
-            composers: []
+            periodo: response.data['periodo'],
+            compositores: []
         };
-
-        for (const composer of response.data['composer']) {
-            period_info.composers.push({ name: composer['nome'], id: composer['id'] });
+        try{
+            for (const composer of response.data['compositores']) {
+                period_info.compositores.push({ nome: composer['nome'], id: composer['id'] });
+            }
+        }catch (error) {
+            console.error("Failed to fetch period composers:", error);
         }
 
         return period_info;
@@ -106,19 +75,6 @@ async function get_period_information(period_id) {
     }
 }
 
-/*
-{
-   "id":"PERIOD_ID",
-   "nome":"NAME",
-   "composer":[
-      {
-         "nome":"NOME",
-         "id":"ID"
-      }
-   ]
-}
-*/
-
 async function get_periods() {
     let periods = [];
 
@@ -126,10 +82,15 @@ async function get_periods() {
         const response = await axios.get('http://localhost:3000/periodos');
         for (const period of response.data) {
             let composers = [];
-            for (const composer of period['composer']) {
-                composers.push({ name: composer['nome'], id: composer['id'] });
+            try{
+                for (const composer of period['compositores']) {
+                    composers.push({ nome: composer['nome'], id: composer['id'] });
+                }
             }
-            periods.push({ id: period['id'], name: period['nome'], composers: composers , rule:'?periodo=' + period['nome']});
+            catch (error) {
+                console.error("Failed to fetch period composers:", error);
+            }
+            periods.push({ id: period['id'], periodo: period['periodo'], compositores: composers , rule:'?periodo=' + period['periodo']});
         }
         return periods;
     } catch (error) {
@@ -139,10 +100,37 @@ async function get_periods() {
 }
 
 async function set_composer(composer){
+    // Update Composer
     try {
+        const old_composer = await get_composer_information(composer.id);
+
         const response = await axios.put(`http://localhost:3000/compositores/${composer.id}`, composer);
 
         if (response.status === 200) {
+            // Next, fetch the related periods
+            let old_period = await get_period_information(old_composer.periodoId);
+            let new_period = await get_period_information(composer.periodoId);
+            if (!old_period || !new_period) {
+                console.error("Failed to update period information");
+                return composer.id;
+            }
+            else if (new_period.id !== old_period.id) {
+                // Remove the composer from the old period's composers list
+                old_period.compositores = old_period.compositores.filter(c => c.id !== composer.id);
+                // Update the old period without the composer's information
+                let sucess = await set_period(old_period);
+                if (!sucess) {
+                    console.error("Failed to update old period information");
+                }
+
+                // Add the composer to the period's composers list
+                new_period.compositores.push({nome: composer.nome, id: composer.id});
+                // Update the period with the composer's information
+                sucess = await set_period(new_period);
+                if (!sucess) {
+                    console.error("Failed to update new period information");
+                }
+            }
             return composer.id;
         }
         else {
@@ -160,6 +148,21 @@ async function set_period(period){
         const response = await axios.put(`http://localhost:3000/periodos/${period.id}`, period);
 
         if (response.status === 200) {
+            for (const composer_id of period.compositores) {
+                let composer = await get_composer_information(composer_id.id, false);
+                console.log(composer);
+                if (!composer) {
+                    console.error("Failed to update composer information");
+                }else
+                if (composer.periodoId !== period.id) {
+                    composer.periodoId = period.id;
+                    composer.periodo = period.periodo;
+                    let sucess = await set_composer(composer);
+                    if (!sucess) {
+                        console.error("Failed to update composer information");
+                    }
+                }
+            }
             return period.id;
         }
         else {
@@ -174,10 +177,28 @@ async function set_period(period){
 
 async function create_composer(composer){
     try {
+        const composers = await get_composers("");
+        composer.id = "C" + (composers.length + 1);
+        
         const response = await axios.post(`http://localhost:3000/compositores`, composer);
 
         if (response.status === 201) {
-            return response.data.id;
+            // Next, fetch the related period
+            let new_period = await get_period_information(composer.periodoId);
+            if (!new_period) {
+                console.error("Failed to update period information");
+                return composer.id;
+            }
+            else {
+                // Add the composer to the period's composers list
+                period.compositores.push({nome: composer.nome, id: composer.id});
+                // Update the period with the composer's information
+                const sucess = await set_period(new_period);
+                if (!sucess) {
+                    console.error("Failed to update period information");
+                }
+            }
+            return composer.id;
         }
         else {
             return null;
@@ -191,6 +212,9 @@ async function create_composer(composer){
 
 async function create_period(period){
     try {
+        const periods = await get_periods();
+        period.id = "P" + (periods.length + 1);
+
         const response = await axios.post(`http://localhost:3000/periodos`, period);
 
         if (response.status === 201) {
@@ -208,9 +232,25 @@ async function create_period(period){
 
 async function delete_composer(composer_id){
     try {
+        const composer = await get_composer_information(composer_id);
         const response = await axios.delete(`http://localhost:3000/compositores/${composer_id}`);
 
         if (response.status === 200) {
+            // Next, fetch the related period
+            let period = await get_period_information(composer.periodoId);
+            if (!period) {
+                console.error("Failed to update period information");
+                return composer_id;
+            }
+            else {
+                // Remove the composer from the period's composers list
+                period.compositores = period.compositores.filter(c => c.id !== composer_id);
+                // Update the period without the composer's information
+                const sucess = await set_period(period);
+                if (!sucess) {
+                    console.error("Failed to update period information");
+                }
+            }
             return composer_id;
         }
         else {
@@ -225,9 +265,16 @@ async function delete_composer(composer_id){
 
 async function delete_period(period_id){
     try {
+        const period = await get_period_information(period_id);
         const response = await axios.delete(`http://localhost:3000/periodos/${period_id}`);
 
         if (response.status === 200) {
+            for (const composer of period.compositores) {
+                let sucess = await delete_composer(composer.id);
+                if (!sucess) {
+                    console.error("Failed to delete composer:", composer.id);
+                }
+            }
             return period_id;
         }
         else {

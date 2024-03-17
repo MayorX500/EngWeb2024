@@ -64,7 +64,7 @@ async function build_composer_edit_page(req, res) {
 	res.write('<nav id="rightmenu">');
 	res.write('<div class="innertube">');
 	composers.forEach(composer => {
-		res.write('<h1><a href="/compositores/edit/'+composer.id+'">'+composer.name+'</a></h1>');
+		res.write('<h1><a href="/compositores/edit/'+composer.id+'">'+composer.nome+'</a></h1>');
 	});
 	res.write('</div>');
 	res.write('</nav>');
@@ -185,8 +185,13 @@ async function period_edit_page(req, res){
 	});
 	req.on('end', async () => {
 		let period = querystring.parse(body);
-		period.composer = period['composerInPeriod[]'];
-		period['composerInPeriod[]'] = undefined;
+		period.compositores = [];
+		period['composerInPeriod[]'].forEach(async composer => {
+			let compositor = await api.get_composer_information(composer,false);
+			period.compositores.push({id: composer, nome: compositor.nome});
+		}
+		);
+		delete period['composerInPeriod[]'];
 		let period_id = await api.set_period(period);
 		let string = "?post=update";
 		if (period_id == null) {
@@ -209,7 +214,7 @@ async function period_add_page(req, res){
 	});
 	req.on('end', async () => {
 		let period = querystring.parse(body);
-		period.composer = [];
+		period.compositores = [];
 		let period_id = await api.create_period(period);
 		let string = '?post=create';
 		if (period_id == null) {
@@ -257,7 +262,7 @@ async function build_composer_list_page(req, res) {
 	// Filter by period buttons
 	res.write('<div style="display: flex; justify-content: space-around;">');
 	period.forEach(period => {
-		res.write('<a href="/compositores'+period.rule+'" class="button" style="--color: var(--accent-color);">'+period.name+'</a>');
+		res.write('<a href="/compositores'+period.rule+'" class="button" style="--color: var(--accent-color);">'+period.periodo+'</a>');
 	});
 	res.write('</div>');
 
@@ -266,7 +271,7 @@ async function build_composer_list_page(req, res) {
 	res.write('<div id="composer-list">');
 	res.write('<ul>');
 	composers.forEach(composer => {
-		res.write('<li><h1><a href="/compositores/'+composer.id+'">'+composer.name+'</a><h1></li>');
+		res.write('<li><h1><a href="/compositores/'+composer.id+'">'+composer.nome+'</a><h1></li>');
 	});
 	res.write('</ul>');
 	res.write('</div>');
@@ -287,17 +292,17 @@ async function build_composer_page(req, res) {
 	for (const key in composer) {
 		composer[key] = JSON.parse(JSON.stringify( composer[key]));
 	}
-	builder.write_head(res, 200,composer.name, 'Classical Music Composers', '.html');
+	builder.write_head(res, 200,composer.nome, 'Classical Music Composers', '.html');
 	res.write('<body>');
 	res.write('<main>');
-	res.write('<h1 class="title-big">'+composer.name+'</h1>');
+	res.write('<h1 class="title-big">'+composer.nome+'</h1>');
 	res.write('<div id="innertube">');
 	res.write('<div id="composer-list">');
 	res.write('<ul>');
 	res.write('<li><h2 style="color: var(--foreground)">Biografia: '+composer.bio+'</h2></li>');
-	res.write('<li><h2 style="color: var(--foreground)">Nascimento: '+composer.birth+'</h2></li>');
-	res.write('<li><h2 style="color: var(--foreground)">Morte: '+composer.death+'</h2></li>');
-	res.write('<li><h2 style="color: var(--foreground)">Periodo: <a href="/periodos/'+ composer.period.id +'">'+composer.period.nome+'</a></h2></li>');
+	res.write('<li><h2 style="color: var(--foreground)">Nascimento: '+composer.dataNasc+'</h2></li>');
+	res.write('<li><h2 style="color: var(--foreground)">Morte: '+composer.dataObito+'</h2></li>');
+	res.write('<li><h2 style="color: var(--foreground)">Periodo: <a href="/periodos/'+ composer.periodo.id +'">'+composer.periodo.periodo+'</a></h2></li>');
 	res.write('</ul>');
 	res.write('</div>');
 	res.write('</main>');
@@ -341,6 +346,7 @@ async function build_period_edit_page(req, res) {
 
 	let period = null;
 	let periods = await api.get_periods();
+	periods = periods.filter(period => period.id !== "P0");
 	if (period_id != 'edit') {
 		period= await api.get_period_information(period_id);
 	}
@@ -359,7 +365,7 @@ async function build_period_edit_page(req, res) {
 	res.write('<nav id="rightmenu">');
 	res.write('<div class="innertube">');
 	periods.forEach(period => {
-		res.write('<h1><a href="/periodos/edit/'+period.id+'">'+period.name+'</a></h1>');
+		res.write('<h1><a href="/periodos/edit/'+period.id+'">'+period.periodo+'</a></h1>');
 	});
 	res.write('</div>');
 	res.write('</nav>');
@@ -405,7 +411,7 @@ async function build_period_select_page(req, res) {
 
 
 async function build_period_list_page(req, res) {
-	let period = await api.get_periods();
+	let periods = await api.get_periods();
 	builder.write_head(res, 200,'Period List', 'Classical Music Periods', '.html');
 	res.write('<body>');
 	res.write('<main>');
@@ -416,8 +422,8 @@ async function build_period_list_page(req, res) {
 	res.write('<div id="composer-list-wrapper">');
 	res.write('<div id="composer-list">');
 	res.write('<ul>');
-	period.forEach(period => {
-		res.write('<li><h1><a href="/periodos/'+period.id+'">'+period.name+'</a><h1></li>');
+	periods.forEach(period => {
+		res.write('<li><h1><a href="/periodos/'+period.id+'">'+period.periodo+'</a><h1></li>');
 	});
 	res.write('</ul>');
 	res.write('</div>');
@@ -435,15 +441,15 @@ async function build_period_page(req, res) {
 	let period_id = req.url.split("/")[2];
 	period_id = period_id.split("?")[0];
 	let period = await api.get_period_information(period_id);
-	builder.write_head(res, 200, period.name, 'Classical Music Periods', '.html');
+	builder.write_head(res, 200, period.periodo, 'Classical Music Periods', '.html');
 	res.write('<body>');
 	res.write('<main>');
-	res.write('<h1 class="title-big">'+period.name+'</h1>');
+	res.write('<h1 class="title-big">'+period.periodo+'</h1>');
 	res.write('<div id="innertube">');
 	res.write('<div id="composer-list">');
 	res.write('<ul>');
-	period.composers.forEach(composer => {
-		res.write('<li><h2><a href="/compositor/'+composer.id+'">'+composer.name+'</a><h2></li>');
+	period.compositores.forEach(composer => {
+		res.write('<li><h2><a href="/compositores/'+composer.id+'">'+composer.nome+'</a><h2></li>');
 	});
 	res.write('</ul>');
 	res.write('</div>');
