@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<!-- Template by html.am -->
+<html style="font-size: 16px;" lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta charset="utf-8">
+		<meta name="description" content="Music Composers, Composers">
+		<title>Composium</title>
+		<link rel="icon" href="/static/images/favicon.png">
+	</head>
+	
+	<body>
+		<main>
+			<h1 class="title-big">About</h1>
+			<div class="innertube">
+				
+				<h1 style="color: var(--accent-complement-dark);">Main Objective</h1>
+				<h2>Date</h2>
+				<ul>
+					<li>Start: 2024/03/09</li>
+					<li>End: 2024/03/14</li>
+				</ul>
+			
+				<h2>Author:</h2>
+				<ul>
+					<li>A93294</li>
+					<li>Pedro Miguel Rodrigues Gomes</li>
+				</ul>
+			
+				<h2>Summary</h2>
+				<ol>
+					<li>Data Analysis and Database Creation
+						<ul>
+							<li>Analyze the provided data about music composers and create a suitable dataset to be used with JSON-SERVER.</li>
+						</ul>
+					</li>
+					<li>Web Query Service
+						<ul>
+							<li>Use CSS and JavaScript to create a webpage that allows querying composers and musical periods.</li>
+							<li>Develop a web service that responds to HTTP GET requests on the following routes:
+								<ul>
+									<li><span class="code">/compositores</span> -> A listing of all composers.</li>
+									<li><span class="code">/compositores/{id}</span> -> Details about a specific composer.</li>
+									<li><span class="code">/compositores?periodo={periodo}</span> -> A list of composers from a specific period.</li>
+									<li><span class="code">/periodos</span> -> A list of all musical periods present in the dataset.</li>
+									<li><span class="code">/periodos/{id}</span> -> Details about a specific musical period.</li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+					<li>CRUD Operations
+						<ul>
+							<li>Implement CRUD (Create, Read, Update, Delete) operations for:
+								<ul>
+									<li><span class="code">/compositores/edit</span> -> To add, edit, remove, and query composers.</li>
+									<li><span class="code">/periodos/edit</span> -> To add, edit, remove, and query musical periods.</li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+				</ol>
+			
+				<h2>Results</h2>
+				<div class='figure'>
+					<img style="border-radius: 8px; border: 2px solid var(--foreground);"  width="70%" src="https://mayorx.xyz/Media/EngWeb2024/tpc4/index.png" alt="Home Page">
+					<img style="border-radius: 8px; border: 2px solid var(--foreground);" width="70%" src="https://mayorx.xyz/Media/EngWeb2024/tpc4/composers.png" alt="Composers Page">
+					<img style="border-radius: 8px; border: 2px solid var(--foreground);" width="70%" src="https://mayorx.xyz/Media/EngWeb2024/tpc4/periods.png" alt="Periods Page">
+					<img style="border-radius: 8px; border: 2px solid var(--foreground);" width="70%" src="https://mayorx.xyz/Media/EngWeb2024/tpc4/composer.png" alt="Specific Composer Page">
+					<img style="border-radius: 8px; border: 2px solid var(--foreground);" width="70%" src="https://mayorx.xyz/Media/EngWeb2024/tpc4/period.png" alt="Specific Period Page">
+					<img style="border-radius: 8px; border: 2px solid var(--foreground);" width="70%" src="https://mayorx.xyz/Media/EngWeb2024/tpc4/crud_edit_composer.png" alt="CRUD Edit Composers">
+					<img style="border-radius: 8px; border: 2px solid var(--foreground);" width="70%" src="https://mayorx.xyz/Media/EngWeb2024/tpc4/crud_add_composer.png" alt="CRUD Add Composers">
+					<img style="border-radius: 8px; border: 2px solid var(--foreground);" width="70%" src="https://mayorx.xyz/Media/EngWeb2024/tpc4/crud_delete_composer.png" alt="CRUD Delete Composers">
+					<img style="border-radius: 8px; border: 2px solid var(--foreground);" width="70%" src="https://mayorx.xyz/Media/EngWeb2024/tpc4/crud_edit_period.png" alt="CRUD Edit Periods">
+					<img style="border-radius: 8px; border: 2px solid var(--foreground);" width="70%" src="https://mayorx.xyz/Media/EngWeb2024/tpc4/crud_add_period.png" alt="CRUD Add Periods">
+					<img style="border-radius: 8px; border: 2px solid var(--foreground);" width="70%" src="https://mayorx.xyz/Media/EngWeb2024/tpc4/crud_delete_period.png" alt="CRUD Delete Periods">
+					<img style="border-radius: 8px; border: 2px solid var(--foreground);" width="70%" src="https://mayorx.xyz/Media/EngWeb2024/tpc4/about.png" alt="About">
+				</div>
+				
+			</div>
+		</main>
+
+		<nav id="nav">
+			<div class="innertube">
+				<h1><a href="/">Home</a></h1>
+				<h1><a href="/compositores">Classical Music Composers</a></h1>
+				<h1><a href="/periodos">Eras of Classical Music</a></h1>
+				<h1><a href="/CRUD">CRUD Operations</a></h1>
+                <h1><a href="/about">About this Work</a></h1>
+			</div>
+		</nav>	
+
+		<footer id="footer">
+			<div id="logo">
+				<p>&copy; Copyright <a href="https://github.com/MayorX500">Miguel Gomes</a> &#124; <a href="#">Terms of Use</a> &#124; <a href="#">Privacy Policy</a></p>
+			</div>
+		</footer>
+		
+	</body>
+</html>

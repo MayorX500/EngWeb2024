@@ -1,0 +1,23 @@
+extends layout
+
+block content
+  main
+    h1.title-big Composers
+    .innertube
+      // Filter by period buttons
+      div(style="display: flex; justify-content: space-around;")
+        each period in periods
+          if period.rule
+            a.button(href="/compositores?filter="+period.rule, style="--color: var(--accent-color);")= period.periodo
+          else 
+            a.button(href="/compositores", style="--color: var(--accent-color);")= period.periodo
+      // Composers list
+      #composer-list-wrapper
+        #composer-list
+          ul
+            each composer in composers
+              li
+                h1
+                  a(href="/compositores/"+composer.id)= composer.nome
+  include nav.pug
+  include footer.pug

@@ -1,0 +1,15 @@
+extends layout
+
+block content
+  main
+    h1.title-big Composers
+    .innertube
+      #composer-list-wrapper
+        #composer-list
+          ul
+            each period in periods
+              li
+                h1
+                  a(href="/periodos/"+period.id)= period.periodo
+  include nav.pug
+  include footer.pug

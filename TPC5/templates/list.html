@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<!-- Template by html.am -->
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>3 Column, Right Menus</title>	
+	</head>
+	
+	<body>
+		<div id="mainwrapper">
+            <h1 class="title-big">CRUD</h1>
+			<div id="contentwrapper">
+				<div id="content-crud">
+					<div class="innertube">
+						<h1 style="color: var(--accent-complement-dark);"> What is <i>CRUD</i></h1>
+						<form id="composerForm" action="/update-composer" method="POST">
+							<div class="form-group">
+								<label for="id">ID:</label>
+								<input type="text" id="id" name="id" value="C26" readonly>
+							</div>
+							<div class="form-group">
+								<label for="nome">Name:</label>
+								<input type="text" id="nome" name="nome" value="Alessandro Marcello">
+							</div>
+							<div class="form-group">
+								<label for="bio">Biography:</label>
+								<textarea id="bio" name="bio" rows="4">Alessandro Ignazio Marcello (Veneza, 1 de Fevereiro de 1673 –Veneza, 19 de Junho de 1747) foi um nobre e diletante, que se interessava pela arte, tendo sido poeta, filósofo e notável músico italiano.</textarea>
+							</div>
+							<div class="form-group">
+								<label for="dataNasc">Birth Date:</label>
+								<input type="date" id="dataNasc" name="dataNasc" value="1673-02-01">
+							</div>
+							<div class="form-group">
+								<label for="dataObito">Death Date:</label>
+								<input type="date" id="dataObito" name="dataObito" value="1747-06-19">
+							</div>
+							<div class="form-group">
+								<label for="periodoId">Period ID:</label>
+								<input type="text" id="periodoId" name="periodoId" value="P1" readonly>
+							</div>
+							<div class="form-group">
+								<label for="periodo">Period:</label>
+								<input type="text" id="periodo" name="periodo" value="Barroco">
+							</div>
+							<div class="form-group">
+								<button type="submit" class="btn">Update Composer</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+			
+			<nav id="rightmenu">
+				<div class="innertube">
+                    <h1><a href="/compositores/edit">Edit Classical Music Composers</a></h1>
+                    <h1><a href="/periodos/edit">Edit Eras of Classical Music</a></h1>
+				</div>
+			</nav>
+			
+			<nav id="nav">
+				<div class="innertube">
+                    <h1><a href="/">Home</a></h1>
+                    <h1><a href="/compositores">Classical Music Composers</a></h1>
+                    <h1><a href="/periodos">Eras of Classical Music</a></h1>
+                    <h1><a href="/CRUD">CRUD Operations</a></h1>
+                    <h1><a href="/about">About this Work</a></h1>
+				</div>
+			</nav>
+		</div>
+		<footer id="footer">
+			<div id="logo">
+				<p>&copy; Copyright <a href="https://github.com/MayorX500">Miguel Gomes</a> &#124; <a href="#">Terms of Use</a> &#124; <a href="#">Privacy Policy</a></p>
+			</div>
+		</footer>
+
+	</body>
+
+</html>

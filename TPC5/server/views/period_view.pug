@@ -1,0 +1,15 @@
+extends layout
+
+block content
+  main
+    h1.title-big= period.periodo
+    #innertube
+      // Composer list
+      #composer-list
+        ul
+          for composer in period.compositores
+            li
+              h2(style="color: var(--foreground)")
+                a(href="/compositores/"+composer.id)= composer.nome 
+  include nav.pug
+  include footer.pug

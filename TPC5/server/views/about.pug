@@ -1,0 +1,77 @@
+extends layout
+
+block content
+  main
+    h1.title-big About
+    .innertube
+      h1(style="color: var(--accent-complement-dark);") Main Objective
+      h2 Date
+      ul
+        li Start: 2024/03/15
+        li End: 2024/03/17
+      h2 Author:
+      ul
+        li A93294
+        li Pedro Miguel Rodrigues Gomes
+      h2 Summary
+      ol
+        li Data Analysis and Database Creation
+          ul
+            li Analyze the provided data about music composers and create a suitable dataset to be used with JSON-SERVER.
+        li Web Query Service
+          ul
+            li Use CSS and JavaScript to create a webpage that allows querying composers and musical periods.
+            li Develop a web service that responds to HTTP GET requests on the following routes:
+              ul
+                li 
+                  span.code /compositores
+                  | -> A listing of all composers.
+                li 
+                  span.code /compositores/{id}
+                  | -> Details about a specific composer.
+                li 
+                  span.code /compositores?periodo={periodo}
+                  | -> A list of composers from a specific period.
+                li 
+                  span.code /periodos
+                  | -> A list of all musical periods present in the dataset.
+                li 
+                  span.code /periodos/{id}
+                  | -> Details about a specific musical period.
+        li CRUD Operations
+          ul
+            li Implement CRUD (Create, Read, Update, Delete) operations for:
+              ul
+                li 
+                  span.code /edit/compositores/{id}
+                  | -> To edit composers.
+                li 
+                  span.code /edit/periodos/{id}
+                  | -> To edit musical periods.
+                li 
+                  span.code /add/compositores
+                  | -> To add composers.
+                li 
+                  span.code /add/periodos
+                  | -> To add musical periods.
+                li 
+                  span.code /delete/compositores
+                  | -> To remove composers.
+                li 
+                  span.code /delete/periodos
+                  | -> To remove musical periods.
+      h2 Results
+      .figure
+        each url, alt in [["https://mayorx.xyz/Media/EngWeb2024/tpc4/index.png", "Home Page"], ["https://mayorx.xyz/Media/EngWeb2024/tpc4/composers.png", "Composers Page"], ["https://mayorx.xyz/Media/EngWeb2024/tpc4/periods.png", "Periods Page"], ["https://mayorx.xyz/Media/EngWeb2024/tpc4/composer.png", "Specific Composer Page"], ["https://mayorx.xyz/Media/EngWeb2024/tpc4/period.png", "Specific Period Page"], ["https://mayorx.xyz/Media/EngWeb2024/tpc4/crud_edit_composer.png", "CRUD Edit Composers"], ["https://mayorx.xyz/Media/EngWeb2024/tpc4/crud_add_composer.png", "CRUD Add Composers"], ["https://mayorx.xyz/Media/EngWeb2024/tpc4/crud_delete_composer.png", "CRUD Delete Composers"], ["https://mayorx.xyz/Media/EngWeb2024/tpc4/crud_edit_period.png", "CRUD Edit Periods"], ["https://mayorx.xyz/Media/EngWeb2024/tpc4/crud_add_period.png", "CRUD Add Periods"], ["https://mayorx.xyz/Media/EngWeb2024/tpc4/crud_delete_period.png", "CRUD Delete Periods"], ["https://mayorx.xyz/Media/EngWeb2024/tpc4/about.png", "About"]]
+          img(style="border-radius: 8px; border: 2px solid var(--foreground);" width="70%" src=url alt=alt)
+  nav#nav
+    .innertube
+      h1: a(href="/") Home
+      h1: a(href="/compositores") Classical Music Composers
+      h1: a(href="/periodos") Eras of Classical Music
+      h1: a(href="/CRUD") CRUD Operations
+      h1: a(href="/about") About this Work
+  footer#footer
+    #logo
+      p © Copyright #[a(href="https://github.com/MayorX500") Miguel Gomes] | #[a(href="#") Terms of Use] | #[a(href="#") Privacy Policy]
+

@@ -1,0 +1,17 @@
+extends layout
+
+block content
+  #mainwrapper
+    h1.title-big CRUD
+    #contentwrapper
+      #content-crud
+        .innertube
+          h1(style="color: var(--accent-complement-dark);")= message
+          // Insert the add composer form HTML here
+          if composerFormHtml
+            != composerFormHtml
+    include rightmenu.pug
+    include nav.pug
+    include footer.pug
+    - if (post)
+      script alert("#{string}");

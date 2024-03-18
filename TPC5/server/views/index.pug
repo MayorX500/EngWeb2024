@@ -1,0 +1,11 @@
+extends layout
+
+block content
+	main
+		h1.title-big Composium
+		.innertube
+			h1(style="color: var(--accent-complement-dark);") Main Composers
+		p
+			script generateText(40)
+	include nav.pug
+	include footer.pug

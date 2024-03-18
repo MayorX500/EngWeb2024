@@ -1,0 +1,15 @@
+extends layout
+
+block content
+  #mainwrapper
+    h1.title-big CRUD
+    #contentwrapper
+      #content-crud
+        .innertube
+          h1(style="color: var(--accent-complement-dark);") What is #[i CRUD]
+          p
+            script generateText(15)
+    include rightmenu.pug
+    include nav.pug
+    include footer.pug
+

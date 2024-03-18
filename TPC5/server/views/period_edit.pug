@@ -1,0 +1,23 @@
+extends layout
+
+block content
+  #mainwrapper
+    h1.title-big CRUD
+    #contentwrapper
+      #content-crud
+        .innertube
+          h1(style="color: var(--accent-complement-dark);") Edit Period
+          if periodFormHtml
+            != periodFormHtml
+          else
+            h1 Please select a period
+    nav
+      #rightmenu
+        .innertube
+          each period in periods
+            if period.id != "P0"
+              h1: a(href="/periodos/edit/"+period.id)= period.periodo
+    include nav.pug
+    include footer.pug
+    - if (post)
+      script alert("#{string}");

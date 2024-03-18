@@ -1,0 +1,22 @@
+extends layout
+
+block content
+  main
+    h1.title-big= composer.nome
+    #innertube
+      // Composer list
+      #composer-list
+        ul
+          li
+            h2(style="color: var(--foreground)")= 'Biografia: ' + composer.bio
+          li
+            h2(style="color: var(--foreground)")= 'Nascimento: ' + composer.dataNasc
+          li
+            h2(style="color: var(--foreground)")= 'Morte: ' + composer.dataObito
+          li
+            h2(style="color: var(--foreground)") Periodo: 
+              a(href="/periodos/"+composer.periodo.id)= composer.periodo.periodo
+  include nav.pug
+  include footer.pug
+    - if (post)
+      script alert("#{string}");
