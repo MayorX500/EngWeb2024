@@ -12,18 +12,25 @@ All notable changes to this project will be documented in this file. See [conven
 - **(tpc4)** change finish date. - ([3579277](https://github.com/MayorX500/EngWeb2024/commit/35792772900b81b14aad07f6fd001a01b04a63cb)) - Miguel Gomes
 - **(tpc4)** update finish date in about.html. - ([e2e1902](https://github.com/MayorX500/EngWeb2024/commit/e2e19020cff62137c251e926302ba38a96e9fb98)) - Miguel Gomes
 - **(tpc4)** update image link. - ([79317d2](https://github.com/MayorX500/EngWeb2024/commit/79317d2a6d37ada525da18a82aa47cde715cf3a5)) - Miguel Gomes
+- **(tpc4)** update manifest.xml. - ([e6e297a](https://github.com/MayorX500/EngWeb2024/commit/e6e297a20d97f1cc1c7b2a10cbafedbfa06f1442)) - MayorX500
 - initial push - ([51e4932](https://github.com/MayorX500/EngWeb2024/commit/51e493270949864064d52066204060e30ab41781)) - MayorX500
 - change manifest.md to correct filetype (.xml) - ([24fb3a6](https://github.com/MayorX500/EngWeb2024/commit/24fb3a63b63be3852e28f5569bf2365d799ce178)) - MayorX500
 - generate required documentation. - ([7b09642](https://github.com/MayorX500/EngWeb2024/commit/7b096421cb71b682191c8a56eae2be08959f97d1)) - MayorX500
 - update manifest and README - ([593084c](https://github.com/MayorX500/EngWeb2024/commit/593084c5ddd3a3842eae123a0f3d4d3650b254f8)) - MayorX500
 - update .gitignore - ([01c5e8b](https://github.com/MayorX500/EngWeb2024/commit/01c5e8ba167f99ec5e1bbc728aedb7225b311c40)) - MayorX500
 - update changelog - ([8458586](https://github.com/MayorX500/EngWeb2024/commit/84585868d4ab252db62c44a658186c2e1d50cc28)) - MayorX500
+- update Changelog. - ([ee5fbaf](https://github.com/MayorX500/EngWeb2024/commit/ee5fbaff3780fb5520f81e17edb2c5262949189a)) - MayorX500
+- update gitignore - ([ce8a5b9](https://github.com/MayorX500/EngWeb2024/commit/ce8a5b99f058f0dd0a3db194a2b2544e059bbf09)) - MayorX500
 
 ### Features
 
+- **(assessment)** assessment conclusion - ([6db12ea](https://github.com/MayorX500/EngWeb2024/commit/6db12ea961673d8c700db9eed10c234659e9ac72)) - MayorX500
+- **(assessment)** update api behavior on specific sports - ([52cab00](https://github.com/MayorX500/EngWeb2024/commit/52cab008cf2208b696c1f848d95f8559a53eccde)) - MayorX500
 - **(start)** implementation of a python executable - ([8f13885](https://github.com/MayorX500/EngWeb2024/commit/8f13885061fa2041fb753f3abcb96b4d22abccd5)) - MayorX500
 - **(start)** implements a config file - ([e0aa9dc](https://github.com/MayorX500/EngWeb2024/commit/e0aa9dc235c2f9dfd2781143097c8ce4ab1d0922)) - MayorX500
 - **(tpc4)** tpc completed, it took a while. - ([33b5572](https://github.com/MayorX500/EngWeb2024/commit/33b55724181cf9395a14887d3d69aa48887ee84c)) - MayorX500
+- **(tpc4)** fix CRUD operations. - ([8faa858](https://github.com/MayorX500/EngWeb2024/commit/8faa8581a90df6f1963cfc98547d98233d50553b)) - MayorX500
+- **(tpc5)** add implementation in pug. - ([8245223](https://github.com/MayorX500/EngWeb2024/commit/8245223f1b7e832aebe5a6bc5079067f61329b41)) - MayorX500
 - import the used dataset. - ([70e7dcb](https://github.com/MayorX500/EngWeb2024/commit/70e7dcbb106000cf0d830ed35b45d0886b83ee12)) - MayorX500
 - creation of the main app in order to generate the static pages HTML. - ([5b182ab](https://github.com/MayorX500/EngWeb2024/commit/5b182abdf31d3fe3b377646c87787c0ac8191df3)) - MayorX500
 - generation of the static HTML pages. - ([558d384](https://github.com/MayorX500/EngWeb2024/commit/558d384b188f5b4e519238600d5c96e2ca313e3b)) - MayorX500
