@@ -16,7 +16,10 @@ router.get('/:modalidade', async function(req, res, next) {
 		res.status(404).send('Modalidade não encontrada');
 		return;
 	}
-	else res.json(modalidade);
+	else{
+		let atletas = modalidade.pessoas.sort((a, b) => a.nome.localeCompare(b.nome));
+		res.json(atletas);
+	}
 });
 
 router.post('/', async function(req, res, next) {
