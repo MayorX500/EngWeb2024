@@ -1,3 +1,6 @@
 [submodule "Projeto"]
 	path = Projeto
 	url = https://github.com/MayorX500/EngWebProj2024.git
+[submodule "Teste"]
+	path = Teste
+	url = https://github.com/MayorX500/ENGWEB2024-Normal
